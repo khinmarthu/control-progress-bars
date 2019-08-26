@@ -17,6 +17,7 @@
     "uuid": "^3.3.3"
   },
   "scripts": {
+    "cp": "cp .env.example .env",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

@@ -6,6 +6,30 @@ Progress Bars application allows you to control each bar on the fly.
 ![Progress Bars Demo](demo/progress-bars-ui-demo.gif)
 
 
+### `Getting Started`
+
+(1) create a env file
+
+    ```
+    yarn cp
+    ```
+
+(2) configure your .env file
+
+
+(3) install all dependencies for a project
+
+    ```
+    yarn install
+    ```
+
+(4) Runs the app in the development mode
+
+    ```
+    yarn start
+    ```
+
+
 In the project directory, you can run:
 
 ### `yarn install`
