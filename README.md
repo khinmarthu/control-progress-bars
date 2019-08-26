@@ -8,22 +8,22 @@ Progress Bars application allows you to control each bar on the fly.
 
 ### `Getting Started`
 
-##### - create a env file
+##### 1. create a env file
 
 ```sh
 yarn cp
 ```
 
-##### - configure your .env file
+##### 2. configure your .env file
 
 
-##### - install all dependencies for a project
+##### 3. install all dependencies for a project
 
 ```sh
 yarn install
 ```
 
-##### - Runs the app in the development mode
+##### 4. Runs the app in the development mode
 
 ```sh
 yarn start
