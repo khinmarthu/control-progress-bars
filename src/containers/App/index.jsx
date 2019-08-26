@@ -22,7 +22,9 @@ const AppWrapper = styled('div')`
   background-color: aliceblue;
 `;
 
-const Row = styled('div')`
+const Row = styled('div').attrs(() => ({
+  className: 'row',
+}))`
   padding: 10px;
   &:last-of-type {
     margin: 10px;
@@ -36,7 +38,9 @@ const Row = styled('div')`
   }
 `;
 
-const Col = styled('div')``;
+const Col = styled('div').attrs(() => ({
+  className: 'col-sm',
+}))``;
 
 const App = () => {
   const [bars, setBars] = useState({});
@@ -106,8 +110,8 @@ const App = () => {
   }, [bars, currentBar, getValue]);
 
   const renderBars = useMemo(() => map(bars, (bar) => (
-    <Row className="row" key={bar.key}>
-      <Col className="col-sm">
+    <Row key={bar.key}>
+      <Col>
         <ProgressBar value={bar.value} max={bar.limit} />
       </Col>
     </Row>
@@ -122,7 +126,7 @@ const App = () => {
   )), [bars]);
 
   const renderSelect = useMemo(() => (
-    <Col className="col-sm" key="select-bar">
+    <Col key="select-bar">
       <Select
         defaultValue={currentBar}
         value={currentBar}
@@ -135,7 +139,7 @@ const App = () => {
   ), [currentBar, getSelectOption, handleSelectChange]);
 
   const renderButtons = useMemo(() => map(buttons, (button) => (
-    <Col className="col-sm" key={button.key}>
+    <Col key={button.key}>
       <Button type="default" value={button.value} onClick={handleButtonClick}>
         {button.value}
       </Button>
@@ -145,7 +149,7 @@ const App = () => {
   return (
     <AppWrapper className="container">
       {renderBars}
-      <Row className="row" key="row-last">
+      <Row key="row-last">
         {renderSelect}
         {renderButtons}
       </Row>

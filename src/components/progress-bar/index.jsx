@@ -6,27 +6,37 @@ import styled from 'styled-components';
 import { PROGRESS_BAR_DANGER, PROGRESS_BAR, PROGRESS } from '../../constants/defaultClassName';
 import { PROGRESS_VALUES } from '../../constants/defaultValue';
 
+
 const { MAX_VALUE, MIN_VALUE } = PROGRESS_VALUES;
 
 const ProgressWrapper = styled('div')``;
 
 const Progress = styled('div')``;
 
-const ProgressText = styled('div')`
+const ProgressText = styled('div').attrs(() => ({
+  className: 'progress-text',
+}))`
   margin-left: 50%;
   position: absolute;
 `;
 
 const ProgressBar = memo((props) => {
   const {
-    min, max, value, className,
+    max, value, className,
   } = props;
-  const [width, setWidth] = useState(0);
+  const [percentage, setPercentage] = useState(0);
+  const [actualValue, setActualValue] = useState(value); // progress bar actual value
 
   const wrapperClassname = `${PROGRESS}${className}`;
 
   useEffect(() => {
-    setWidth((value / max) * 100);
+    if (value < MIN_VALUE) {
+      setPercentage(MIN_VALUE);
+      setActualValue(MIN_VALUE);
+    } else {
+      setPercentage((value / max) * 100);
+      setActualValue(value);
+    }
   }, [value, max]);
 
   const progressClassname = useMemo(() => {
@@ -42,13 +52,13 @@ const ProgressBar = memo((props) => {
       <Progress
         className={progressClassname}
         role="progressbar"
-        style={{ width: `${width}%` }}
-        aria-valuenow={value}
-        aria-valuemin={min}
+        style={{ width: `${percentage}%` }}
+        aria-valuenow={actualValue}
+        aria-valuemin={MIN_VALUE}
         aria-valuemax={max}
       />
       <ProgressText>
-        {`${value}%`}
+        {`${actualValue} (${percentage.toFixed(2)}%)`}
       </ProgressText>
     </ProgressWrapper>
   );
@@ -56,14 +66,13 @@ const ProgressBar = memo((props) => {
 
 ProgressBar.defaultProps = {
   className: '',
-  min: MIN_VALUE,
   max: MAX_VALUE,
+  value: MIN_VALUE,
 };
 
 ProgressBar.propTypes = {
   max: PropTypes.number,
-  min: PropTypes.number,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
   className: PropTypes.string,
 };
 
