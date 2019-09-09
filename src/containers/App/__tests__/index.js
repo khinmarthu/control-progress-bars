@@ -18,7 +18,7 @@ jest.mock('axios');
 it('loads and displays greeting', async () => {
   await waitForElement(axios.get.mockResolvedValueOnce(mockData.raw));
 
-  const { getByText, getByTestId, getAllByTestId } = render(<App />);
+  const { getByTestId, getAllByTestId } = render(<App />);
 
   expect(getByTestId('loading')).toBeInTheDocument();
 
