@@ -1,0 +1,44 @@
+{
+  "raw": {
+    "data": {
+      "buttons": [37, 10, -46, -36],
+      "bars": [43, 43, 54, 51],
+      "limit": 120
+    },
+    "status": 200
+  },
+  "parsed": {
+    "bars": {
+      "#progress1": {
+        "key": "16a41e14-c39c-43d0-abea-b4ed37b9dccc",
+        "limit": 120,
+        "text": "#progress1",
+        "value": 43
+      },
+      "#progress2": {
+        "key": "a6c3b5c6-9d99-4a7e-9062-641d0661af86",
+        "limit": 120,
+        "text": "#progress2",
+        "value": 43
+      },
+      "#progress3": {
+        "key": "f383e052-d110-4a97-b239-c29b175c0f51",
+        "limit": 120,
+        "text": "#progress3",
+        "value": 54
+      },
+      "#progress4": {
+        "key": "7ba4f146-0b76-4688-a539-b7c0c4ca9175",
+        "limit": 120,
+        "text": "#progress4",
+        "value": 51
+      }
+    },
+    "buttons": [
+      { "value": 37, "key": "3e2a51ee-addf-4661-9823-8aa123be44b3" },
+      { "value": 10, "key": "61e765c8-b5fe-4a28-859d-b05d9384bd2b" },
+      { "value": -46, "key": "7d037590-fd99-4a3f-a42c-e06d0818d81a" },
+      { "value": -36, "key": "16d28510-2c3c-49ba-a2b9-84ee66fc80d8" }
+    ]
+  }
+}

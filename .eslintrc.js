@@ -15,7 +15,8 @@ module.exports = {
     },
     "plugins": [
       "react",
-      "jest"
+      "jest",
+      "react-hooks"
     ],  
     "rules": {
       "semi": "error",
@@ -35,5 +36,6 @@ module.exports = {
       "jest/valid-expect": "error",
       "jest/no-focused-tests": "warn",
       "jest/prefer-to-have-length": "warn",
+      "react-hooks/rules-of-hooks": "error",
     }
 }
