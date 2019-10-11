@@ -2,7 +2,7 @@
 
 Progress Bars application allows you to control each bar on the fly.
 
-### Demo
+### `Demo`
 ![Progress Bars Demo](demo/progress-bars-ui-demo.gif)
 
 
@@ -10,17 +10,17 @@ Progress Bars application allows you to control each bar on the fly.
 
 In the project directory, you can run:
 
-##### 1. Create a env file
+#### 1. Create an env file
 
 ```sh
 yarn cp
 ```
 
 
-##### 2. Configure your .env file
+#### 2. Configure your .env file
 
 
-##### 3. Install all dependencies for a project
+#### 3. Install all dependencies for a project
 
 This is most commonly used when you have just checked out code for a project, or when another developer on the project has added a new dependency that you need to pick up.
 
@@ -29,7 +29,7 @@ yarn install
 ```
 
 
-##### 4. Runs the app in the development mode
+#### 4. Runs the app in the development mode
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -41,7 +41,7 @@ yarn start
 ```
 
 
-##### 5. Runs the test watcher in an interactive mode.
+#### 5. Runs the test watcher in an interactive mode.
 
 By default, runs tests related to files changed since the last commit.
 
@@ -50,7 +50,7 @@ yarn test
 ```
 
 
-##### 6. Builds the app for production to the `build` folder.
+#### 6. Builds the app for production to the `build` folder.
 
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
