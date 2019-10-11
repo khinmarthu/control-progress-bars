@@ -2,6 +2,8 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { shallow, mount } from '../setupTests';
 
+export * from './testingLibraryHelper';
+
 export {
   mountWithTheme,
   unmountComponent,

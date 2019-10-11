@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL, BARS_URI } from '../constants/api';
+import { BASE_URL } from '../constants/api';
 
 const handleResponse = async (response) => {
   if (response.status === 200 && response.data) return response.data;
@@ -19,9 +19,9 @@ const API = axios.create({
   responseType: 'json',
 });
 
-export const getAPIData = async () => {
+export const getAPIData = async (url) => {
   try {
-    const response = await API.get(BARS_URI);
+    const response = await API.get(url);
     return handleResponse(response);
   } catch (e) {
     return handleError(`Axios request failed: ${e}`);

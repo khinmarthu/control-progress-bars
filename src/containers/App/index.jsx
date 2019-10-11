@@ -1,24 +1,34 @@
 import React, {
   useEffect, useState, useCallback, useMemo,
 } from 'react';
-import { map, forEach, toNumber } from 'lodash';
-import { Button, Select } from 'antd';
+import {
+  map, forEach, toNumber, isEmpty,
+} from 'lodash';
+import { Button, Select, Skeleton } from 'antd';
 import styled from 'styled-components';
 import uuidv4 from 'uuid/v4';
 import { getAPIData } from '../../utils/API';
-import ProgressBar from '../../components/progress-bar';
+import allComponents from '../../components';
 import { PROGRESS_VALUES } from '../../constants/defaultValue';
+import { BARS_URI } from '../../constants/api';
+
+const { ProgressBar } = allComponents;
 
 const { MIN_VALUE } = PROGRESS_VALUES;
 
 const { Option } = Select;
 
-const AppWrapper = styled('div')`
+const Wrapper = styled('div').attrs(() => ({
+  className: 'container',
+}))`
   width: 50%;
   padding: 20px;
   border: 1px solid #ECECEC;
   border-radius: 10px;
   margin-top: 10px;
+`;
+
+const AppWrapper = styled(Wrapper)`
   background-color: aliceblue;
 `;
 
@@ -72,7 +82,7 @@ const App = () => {
       key: uuidv4(),
     }));
 
-    getAPIData()
+    getAPIData(BARS_URI)
       .then((res) => {
         setButtons(getButtonsValue(res.buttons));
         setBars(getBarsValue(res));
@@ -128,6 +138,7 @@ const App = () => {
   const renderSelect = useMemo(() => (
     <Col key="select-bar">
       <Select
+        data-testid="select-bar"
         defaultValue={currentBar}
         value={currentBar}
         style={{ width: 120 }}
@@ -140,14 +151,18 @@ const App = () => {
 
   const renderButtons = useMemo(() => map(buttons, (button) => (
     <Col key={button.key}>
-      <Button type="default" value={button.value} onClick={handleButtonClick}>
+      <Button data-testid="button" type="default" value={button.value} onClick={handleButtonClick}>
         {button.value}
       </Button>
     </Col>
   )), [buttons, handleButtonClick]);
 
+  if (isEmpty(bars) || isEmpty(buttons)) {
+    return <Wrapper data-testid="loading"><Skeleton active /></Wrapper>;
+  }
+
   return (
-    <AppWrapper className="container">
+    <AppWrapper data-testid="myresult">
       {renderBars}
       <Row key="row-last">
         {renderSelect}
